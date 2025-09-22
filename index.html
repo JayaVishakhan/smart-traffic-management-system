@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Traffic Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Smart Traffic Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#traffic-map">Traffic Map</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#controls">Controls</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <h2>Traffic Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Current Traffic Status</h3>
+                        <div class="status-indicator">
+                            <div class="status-light" id="traffic-status"></div>
+                            <span id="status-text">Moderate</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Traffic Volume</h3>
+                        <div class="chart-container">
+                            <canvas id="traffic-volume-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Congestion Hotspots</h3>
+                        <ul id="hotspots-list">
+                            <li>Main Street & 5th Avenue <span class="badge red">High</span></li>
+                            <li>Central Boulevard <span class="badge yellow">Medium</span></li>
+                            <li>Highway Exit 23 <span class="badge yellow">Medium</span></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Average Speed</h3>
+                        <div class="chart-container">
+                            <canvas id="speed-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="traffic-map" class="section">
+            <div class="container">
+                <h2>Traffic Map</h2>
+                <div class="map-container">
+                    <div id="traffic-map-display">
+                        <!-- Map will be displayed here -->
+                        <div class="map-placeholder">
+                            <div class="city-grid">
+                                <!-- Simplified city grid with roads -->
+                                <div class="road horizontal" id="road-1"><div class="traffic-indicator"></div></div>
+                                <div class="road horizontal" id="road-2"><div class="traffic-indicator"></div></div>
+                                <div class="road horizontal" id="road-3"><div class="traffic-indicator"></div></div>
+                                <div class="road vertical" id="road-4"><div class="traffic-indicator"></div></div>
+                                <div class="road vertical" id="road-5"><div class="traffic-indicator"></div></div>
+                                <div class="road vertical" id="road-6"><div class="traffic-indicator"></div></div>
+                                <div class="intersection" id="int-1"></div>
+                                <div class="intersection" id="int-2"></div>
+                                <div class="intersection" id="int-3"></div>
+                                <div class="intersection" id="int-4"></div>
+                                <div class="intersection" id="int-5"></div>
+                                <div class="intersection" id="int-6"></div>
+                                <div class="intersection" id="int-7"></div>
+                                <div class="intersection" id="int-8"></div>
+                                <div class="intersection" id="int-9"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-controls">
+                        <h3>Map Legend</h3>
+                        <div class="legend-item">
+                            <span class="legend-color green"></span> Low Traffic
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color yellow"></span> Moderate Traffic
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color red"></span> Heavy Traffic
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color black"></span> Road Closure
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analytics" class="section">
+            <div class="container">
+                <h2>Traffic Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="card full-width">
+                        <h3>Traffic Trends (24 Hours)</h3>
+                        <div class="chart-container large">
+                            <canvas id="traffic-trends-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Peak Hours</h3>
+                        <div class="chart-container">
+                            <canvas id="peak-hours-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Traffic Composition</h3>
+                        <div class="chart-container">
+                            <canvas id="traffic-composition-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Weekly Comparison</h3>
+                        <div class="chart-container">
+                            <canvas id="weekly-comparison-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Incident Reports</h3>
+                        <ul id="incident-list">
+                            <li><span class="time">08:15</span> Minor accident on Main St <span class="badge yellow">Cleared</span></li>
+                            <li><span class="time">09:30</span> Road work on 5th Ave <span class="badge yellow">Ongoing</span></li>
+                            <li><span class="time">12:45</span> Traffic light malfunction at Junction 3 <span class="badge green">Fixed</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="controls" class="section">
+            <div class="container">
+                <h2>Traffic Control System</h2>
+                <div class="controls-grid">
+                    <div class="card">
+                        <h3>Traffic Light Control</h3>
+                        <div class="control-panel">
+                            <div class="control-group">
+                                <label for="intersection-select">Select Intersection:</label>
+                                <select id="intersection-select">
+                                    <option value="int1">Main St & 5th Ave</option>
+                                    <option value="int2">Broadway & Park Rd</option>
+                                    <option value="int3">Central Blvd & Market St</option>
+                                </select>
+                            </div>
+                            <div class="traffic-light-display">
+                                <div class="light red" id="light-red"></div>
+                                <div class="light yellow" id="light-yellow"></div>
+                                <div class="light green" id="light-green"></div>
+                            </div>
+                            <div class="control-buttons">
+                                <button id="auto-mode" class="active">Auto Mode</button>
+                                <button id="manual-mode">Manual Control</button>
+                            </div>
+                            <div class="timing-controls">
+                                <div class="timing-group">
+                                    <label for="green-time">Green Duration:</label>
+                                    <input type="range" id="green-time" min="10" max="60" value="30">
+                                    <span id="green-time-value">30s</span>
+                                </div>
+                                <div class="timing-group">
+                                    <label for="yellow-time">Yellow Duration:</label>
+                                    <input type="range" id="yellow-time" min="3" max="10" value="5">
+                                    <span id="yellow-time-value">5s</span>
+                                </div>
+                                <div class="timing-group">
+                                    <label for="red-time">Red Duration:</label>
+                                    <input type="range" id="red-time" min="10" max="60" value="30">
+                                    <span id="red-time-value">30s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Emergency Response</h3>
+                        <div class="emergency-panel">
+                            <button id="emergency-override" class="emergency-button">Emergency Override</button>
+                            <div class="route-selection">
+                                <label for="emergency-route">Emergency Route:</label>
+                                <select id="emergency-route">
+                                    <option value="route1">Hospital Route 1</option>
+                                    <option value="route2">Fire Station Route</option>
+                                    <option value="route3">Police Station Route</option>
+                                </select>
+                            </div>
+                            <button id="activate-route" class="action-button">Activate Route</button>
+                            <div class="status-message" id="emergency-status">No active emergency routes</div>
+                        </div>
+                    </div>
+                    <div class="card full-width">
+                        <h3>Traffic Simulation</h3>
+                        <div class="simulation-controls">
+                            <div class="control-group">
+                                <label for="traffic-density">Traffic Density:</label>
+                                <input type="range" id="traffic-density" min="1" max="10" value="5">
+                                <span id="density-value">Medium (5)</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="time-of-day">Time of Day:</label>
+                                <input type="range" id="time-of-day" min="0" max="23" value="12">
+                                <span id="time-value">12:00</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="weather-condition">Weather Condition:</label>
+                                <select id="weather-condition">
+                                    <option value="clear">Clear</option>
+                                    <option value="rain">Rain</option>
+                                    <option value="snow">Snow</option>
+                                    <option value="fog">Fog</option>
+                                </select>
+                            </div>
+                            <div class="simulation-buttons">
+                                <button id="start-simulation">Start Simulation</button>
+                                <button id="pause-simulation" disabled>Pause</button>
+                                <button id="reset-simulation" disabled>Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Smart Traffic Management System</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
